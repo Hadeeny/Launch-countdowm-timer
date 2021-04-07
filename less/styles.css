@@ -1,0 +1,170 @@
+html {
+  height: 100%;
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+header {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin-top: 130px;
+  font-size: larger;
+  color: white;
+  text-transform: uppercase;
+}
+
+body {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: hsl(234, 17%, 12%);
+  background-image: url("../assets/images/bg-stars.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+.flip-clock {
+  text-align: center;
+  perspective: 900px;
+  margin: 100px auto;
+}
+.flip-clock *,
+.flip-clock *:before,
+.flip-clock *:after {
+  box-sizing: border-box;
+}
+.flip-clock__piece {
+  display: inline-block;
+  margin: 0 20px;
+}
+.flip-clock__slot {
+  font-size: 20px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  color: hsl(237, 18%, 59%);
+}
+.card {
+  display: block;
+  position: relative;
+  padding-bottom: 0.72em;
+  font-size: 9vw;
+  line-height: 0.95;
+  font-family: monospace;
+  /* background-color: aqua; */
+  /* margin-top: -100px; */
+}
+
+/* card top */
+.card__top,
+.card__bottom,
+.card__back::before,
+.card__back::after {
+  display: block;
+  height: 0.72em;
+  color: hsl(345, 95%, 68%);
+  background: hsl(236, 21%, 26%);
+  padding: 0.25em 0.1em;
+  border-radius: 0.15em 0.1em;
+  transform-style: preserve-3d;
+  width: 1.5em;
+  transform: translateZ(0);
+}
+/* card bottom */
+.card__bottom {
+  color: hsl(345, 95%, 68%);
+  position: absolute;
+  top: 50%;
+  left: 0;
+  border-top: solid 1px #000;
+  background: hsl(236, 21%, 26%);
+  border-radius: 0.1em 0.15em;
+  pointer-events: none;
+  overflow: hidden;
+}
+.card__bottom::after {
+  display: block;
+  margin-top: -0.72em;
+}
+.card__back::before,
+.card__bottom::after {
+  content: attr(data-value);
+}
+.card__back {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  left: 0%;
+  pointer-events: none;
+}
+.card__back::before {
+  position: relative;
+  z-index: -1;
+  overflow: hidden;
+}
+.flip .card__back::before {
+  animation: flipTop 0.3s cubic-bezier(0.37, 0.01, 0.94, 0.35);
+  animation-fill-mode: both;
+  transform-origin: center bottom;
+}
+.flip .card__back .card__bottom {
+  transform-origin: center top;
+  animation-fill-mode: both;
+  animation: flipBottom 0.6s cubic-bezier(0.15, 0.45, 0.28, 1);
+}
+@keyframes flipTop {
+  0% {
+    transform: rotateX(0deg);
+    z-index: 2;
+  }
+  0%,
+  99% {
+    opacity: 0.99;
+  }
+  100% {
+    transform: rotateX(-90deg);
+    opacity: 0;
+  }
+}
+@keyframes flipBottom {
+  0%,
+  50% {
+    z-index: -1;
+    transform: rotateX(90deg);
+    opacity: 0;
+  }
+  51% {
+    opacity: 0.99;
+  }
+  100% {
+    opacity: 0.99;
+    transform: rotateX(0deg);
+    z-index: 5;
+  }
+}
+.footer {
+  background-image: url("../assets/images/pattern-hills.svg");
+  background-repeat: no-repeat;
+  height: 170px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.socials {
+  width: 120px;
+  height: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.networks:hover {
+  fill: brown;
+}
